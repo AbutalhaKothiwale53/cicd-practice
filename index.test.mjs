@@ -1,4 +1,6 @@
-const { sum, subtract, multiply, divide } = require('./index.js');
+
+import { sum, subtract, multiply, divide } from './index.js';
+
 
 test('sum adds numbers', () => {
   expect(sum(2, 3)).toBe(5);
