@@ -1,6 +1,9 @@
 name: Node.js CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
@@ -18,3 +21,7 @@ jobs:
       - name: Simulate deployment
         if: success() #run only if tests pass 
         run: echo "Deployment successful (simulated)"
+      - name: Show environment variables
+        run: echo "Environment is $MY_ENV_VAR"
+        env: 
+          MY_ENV_VAR: "Production"
