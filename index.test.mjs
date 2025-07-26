@@ -1,12 +1,37 @@
-const sum = require("./index");
-test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
+import { sum, subtract, multiply, divide } from './index.js';
+
+test('sum adds numbers', () => {
+  expect(sum(2, 3)).toBe(5);
 });
 
-test("adds negative numbers", () => {
-  expect(sum(-1, -2)).toBe(-3);
+test('sum with non-numbers returns NaN', () => {
+  expect(sum('a', 3)).toBeNaN();
 });
 
-test("adds 0 + 0 to equal 0", () => {
-  expect(sum(0, 0)).toBe(0);
+test('subtract subtracts numbers', () => {
+  expect(subtract(5, 3)).toBe(2);
+});
+
+test('subtract with non-numbers returns NaN', () => {
+  expect(subtract(5, 'b')).toBeNaN();
+});
+
+test('multiply multiplies numbers', () => {
+  expect(multiply(2, 3)).toBe(6);
+});
+
+test('multiply with non-numbers returns NaN', () => {
+  expect(multiply(2, 'c')).toBeNaN();
+});
+
+test('divide divides numbers', () => {
+  expect(divide(6, 3)).toBe(2);
+});
+
+test('divide by zero returns Infinity', () => {
+  expect(divide(6, 0)).toBe(Infinity);
+});
+
+test('divide with non-numbers returns NaN', () => {
+  expect(divide('d', 2)).toBeNaN();
 });
