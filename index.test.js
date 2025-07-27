@@ -1,4 +1,4 @@
-const { sum, multiply}  = require("./index");
+const { sum, multiply, substract}  = require("./index");
 
 test("adds negative numbers", () => {
   expect(sum(-1, -2)).toBe(-3);
@@ -11,3 +11,7 @@ test("adds 0 + 0 to equal 0", () => {
 test("Multiply numbers", () => {
   expect(multiply(2,3)).toBe(6)
 });
+
+test("Substract number", () => {
+  expect(substract(3,2)).toBe(1)
+})

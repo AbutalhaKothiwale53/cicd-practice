@@ -43,4 +43,11 @@ jobs:
           # Example deploying command using $DEPLOY_TOKEN (if you have added it)
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+      
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          npm install -g vercel
+          vercel --prod --token $VERCEL_TOKEN --confirm --cwd .
 
