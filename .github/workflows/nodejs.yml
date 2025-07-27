@@ -3,8 +3,8 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
 
 jobs:
   test:
@@ -42,3 +42,4 @@ jobs:
           # Example deploying command using $DEPLOY_TOKEN (if you have added it)
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+
