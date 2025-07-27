@@ -25,9 +25,11 @@ jobs:
       - name: Show environment variables
         run: echo "Environment is $MY_ENV_VAR"
         env: 
-          MY_ENV_VAR: "Production"
+          MY_ENV_VAR: "Develop"
       - name: Use environment variable
         run: echo "Global var is $GLOBAL_ENV_VAR"
+        env:
+          GLOBAL_ENV_VAR: Production
       - name: Use secret
         run: |
           echo "Using Secret API Key...."
