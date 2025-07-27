@@ -19,10 +19,26 @@ jobs:
         run: npm install
       - name: Run tests
         run: npm test
-      - name: Simulate deployment
-        if: success() #run only if tests pass 
-        run: echo "Deployment successful (simulated)"
+      # - name: Simulate deployment
+      #   if: success() #run only if tests pass 
+      #   run: echo "Deployment successful (simulated)"
       - name: Show environment variables
         run: echo "Environment is $MY_ENV_VAR"
         env: 
           MY_ENV_VAR: "Production"
+      - name: Use environment variable
+        run: echo "Global var is $GLOBAL_ENV_VAR"
+      - name: Use secret
+        run: |
+          echo "Using Secret API Key...."
+          # For demonstration only: Never echo secrets in real workflows
+          # echo "API_KEY = ${{ secrets.API_KEY }}"
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+
+      - name: Simulate deployment with secrets
+        run: |
+          echo "Deploying with token..."
+          # Example deploying command using $DEPLOY_TOKEN (if you have added it)
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
