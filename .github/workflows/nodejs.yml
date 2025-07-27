@@ -28,13 +28,12 @@ jobs:
           MY_ENV_VAR: "Develop"
       - name: Use environment variable
         run: echo "Global var is $GLOBAL_ENV_VAR"
-        env:
-          GLOBAL_ENV_VAR: Production
+
       - name: Use secret
         run: |
           echo "Using Secret API Key...."
           # For demonstration only: Never echo secrets in real workflows
-          # echo "API_KEY = ${{ secrets.API_KEY }}"
+          echo "API_KEY = ${{ secrets.API_KEY }}"
         env:
           API_KEY: ${{ secrets.API_KEY }}
 
