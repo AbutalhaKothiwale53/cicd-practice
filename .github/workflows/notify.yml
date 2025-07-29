@@ -1,7 +1,5 @@
 name: Node.js CI with Notifications, Caching, and Artifacts
-
 on: [push, pull_request]
-
 jobs:
   test:
     runs-on: ubuntu-latest
