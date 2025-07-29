@@ -34,15 +34,26 @@ jobs:
           name: code-coverage
           path: coverage
 
-      # Notify Slack on workflow failure (add if desired)
+      # Notify Slack on workflow success and failure (add if desired)
+      - name: Slack notify on success
+        if: success()
+        env:
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+            curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"✅ CI succeeded for '${{ github.repository }}'!"}' \
+            $SLACK_WEBHOOK_URL
+    
       - name: Slack notify on failure
         if: failure()
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+            SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          curl -X POST -H 'Content-type: application/json' \
-          --data '{"text":"❌ CI failed for ${{ github.repository }}!"}' \
-          $SLACK_WEBHOOK_URL
+            curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"❌ CI failed for '${{ github.repository }}'!"}' \
+            $SLACK_WEBHOOK_URL
+    
+
 
       # Send email (optional, needs SMTP setup)
     #   - name: Email notify on failure
